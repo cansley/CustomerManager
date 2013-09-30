@@ -1,0 +1,60 @@
+﻿@model CustomerWebMgrPOC.Models.CustomerModel
+
+<form id="customerEditForm" action="/Customer/Update" method="post">
+@{
+    @Html.HiddenFor(model => model.Customer.CustomerId)
+    <div>
+        <div class="displayValue label">@Html.LabelFor(model => model.Customer.FirstName)</div>
+        <div class="displayValue ">@Html.TextBoxFor(model => model.Customer.FirstName)</div>
+    </div>
+    <div>
+        <div class="displayValue label">@Html.LabelFor(model => model.Customer.MiddleName)</div>
+        <div class="displayValue">@Html.TextBoxFor(model => model.Customer.MiddleName)</div>
+    </div>
+    <div>
+        <div class="displayValue label">@Html.LabelFor(model => model.Customer.LastName)</div>
+        <div class="displayValue">@Html.TextBoxFor(model => model.Customer.LastName)</div>
+    </div>
+    <br />
+    <fieldset id="AddressSection">
+        <legend>Address Information:</legend>
+        <br />
+        <div>
+            <div class="displayValue label">@Html.LabelFor(model => model.Customer.Address.Address1)</div>
+            <div class="displayValue">@Html.TextBoxFor(model => model.Customer.Address.Address1)</div>
+        </div>
+        <div>
+            <div class="displayValue label">@Html.LabelFor(model => model.Customer.Address.Address2)</div>
+            <div class="displayValue">@Html.TextBoxFor(model => model.Customer.Address.Address2)</div>
+        </div>
+        <div>
+            <div class="displayValue label">@Html.LabelFor(model => model.Customer.Address.Address3)</div>
+            <div class="displayValue">@Html.TextBoxFor(model => model.Customer.Address.Address3)</div>
+        </div>
+        <div>
+            <div class="displayValue label">@Html.LabelFor(model => model.Customer.Address.Address4)</div>
+            <div class="displayValue">@Html.TextBoxFor(model => model.Customer.Address.Address4)</div>
+        </div>
+        <div>
+            <div class="displayValue label">@Html.LabelFor(model => model.Customer.Address.City)</div>
+            <div class="displayValue">@Html.TextBoxFor(model => model.Customer.Address.City)</div>
+        </div>
+        <div>
+            <div class="displayValue label">@Html.LabelFor(model => model.Customer.Address.StateOrProvince)</div>
+            <div class="displayValue">@Html.TextBoxFor(model => model.Customer.Address.StateOrProvince)</div>
+        </div>
+        <div>
+            <div class="displayValue label">@Html.LabelFor(model => model.Customer.Address.PostalCode)</div>
+            <div class="displayValue">@Html.TextBoxFor(model => model.Customer.Address.PostalCode)</div>
+        </div>
+        <div>
+            <div class="displayValue label">@Html.LabelFor(model => model.Customer.Address.Country)</div>
+            <div class="displayValue">@Html.TextBoxFor(model => model.Customer.Address.Country)</div>
+        </div>
+    </fieldset>
+    <div>
+        <input id="save" type="button" class="actionButton" title="Save" value="Save" />
+        <input id="cancel" type="button" class="actionButton" title="Cancel" value="Cancel" />
+    </div>
+}
+</form>

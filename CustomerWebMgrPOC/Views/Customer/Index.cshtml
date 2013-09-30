@@ -1,0 +1,46 @@
+﻿@model CustomerWebMgrPOC.Models.CustomerListModel
+
+@{
+    ViewBag.Title = "Customer Manager";
+}
+
+<script type="text/javascript">
+    function editClickHandler(event) {
+        var button = event.target;
+        var editUrl = "/Customer/Edit?customerId=" + button.id;
+        var modalDialog = $('#modalDialog');
+        modalDialog.load(editUrl).dialog({
+            modal: true,
+            title: "Edit Customer Information",
+            width: 400
+        });
+
+    }
+    function deleteClickHandler(event) {
+        var button = event.target;
+        alert("Clicked Delete!");
+    }
+
+    $(document).ready(function () {
+        $('.actionButton[title="Edit"]').bind("click", editClickHandler);
+        $('.actionButton[title="Delete"]').bind("click", deleteClickHandler);
+    });
+</script>
+
+@{
+    for (int x = 0; x < Model.Customers.Count; x++)
+    {
+        <div class="customerRow">
+            @Html.HiddenFor(model => model.Customers[x].CustomerId)
+            <div class="displayValue nameSection">
+                <div class="displayValue firstName">@Html.ValueFor(model => model.Customers[x].FirstName)</div>
+                <div class="displayValue middleName">@Html.ValueFor(model => model.Customers[x].MiddleName)</div>
+                <div class="displayValue lastName">@Html.ValueFor(model => model.Customers[x].LastName)</div>
+            </div>
+            <div class="displayValue ui-icon ui-icon-pencil actionButton" title="Edit" id="@Model.Customers[x].CustomerId"></div>
+            <div class="displayValue ui-icon ui-icon-trash actionButton" title="Delete" id="@Model.Customers[x].CustomerId"></div>
+        </div>
+    }
+    
+    <div id="modalDialog"></div>
+}
