@@ -14,7 +14,7 @@ namespace CustomerWebMgrPOC.Interfaces
 
         T GetById(int id);
         IOperationResult Add(T Item);
-        IOperationResult Remove(T Item);
+        IOperationResult Remove(int customerId);
         IOperationResult Update(T Item);
         IOperationResult Persist();
     }

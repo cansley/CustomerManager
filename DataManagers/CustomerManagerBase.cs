@@ -71,7 +71,15 @@ namespace DataManagers
                 }
 
 
-                int itemLOC = _customers.BinarySearch(Item);
+                int itemLOC = -1;
+
+                try
+                {
+                    itemLOC = _customers.FindIndex(x => x.CustomerId == Item.CustomerId);
+                }
+                catch
+                { // thows an exception if no matching object found 
+                }
 
                 switch (_allowDupes)
                 {
@@ -106,12 +114,12 @@ namespace DataManagers
             return result;
         }
 
-        public IOperationResult Remove(ICustomer Item)
+        public IOperationResult Remove(int customerId)
         {
             IOperationResult result = new OperationalResult();
             try
             {
-                _customers.Remove(Item);
+                _customers.RemoveAll(z => z.CustomerId == customerId);
                 result.Result = OperationResultStatus.Success;
             }
             catch (Exception ex)

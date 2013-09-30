@@ -50,9 +50,9 @@ namespace CustomerWebMgrPOC.Controllers
         }
 
         [HttpPost]
-        public ActionResult Delete(ICustomer customer)
+        public ActionResult Delete(int CustomerId)
         {
-            IOperationResult result = _dataManager.Remove(customer);
+            IOperationResult result = _dataManager.Remove(CustomerId);
 
             return Json(new { success = result.Result.ToString(), message = result.ExternalErrorMessage });
         }
